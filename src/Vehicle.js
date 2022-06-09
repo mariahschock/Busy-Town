@@ -1,5 +1,9 @@
-export default function Vehicle() {
+export default function Vehicle({ vehicle }) {
   return <div className="vehicle">
+    {vehicle === 'car' && '🚗'}
+    {vehicle === 'truck' && '🚚'}
+    {vehicle === 'bus' && '🚌'}
+    {vehicle === 'motorcycle' && '🏍️'}
     {/* the Vehcile component has a prop called vehicle. Check to see what string is in this vehicle prop */}
     {/* if the vehicle props is a car, render a '🚗' emoji */}
     {/* if the vehicle props is a truck, render a '🚚' emoji */}

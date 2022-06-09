@@ -7,17 +7,24 @@ function App() {
   const [lightColor, setLightColor] = useState('red');
   const [alienSize, setAlienSize] = useState(10);
   const [lizardSize, setLizardSize] = useState(10);
+  const [traffic, setTraffic] = useState(['car', 'truck', 'bus', 'motorcycle']);
 
-  // function handleShrinkAlienClick() {
-  //   if (alienSize > 30) {
-  //     setAlienSize(alienSize - 10);
-  //   }
-  // }
-  // function handleShrinkLizardClick() {
-  //   if (lizardSize > 30) {
-  //     setLizardSize(lizardSize - 10);
-  //   }
-  // }
+  function handleCarClick() {
+    traffic.push('car');
+    setTraffic(traffic.slice());
+  }
+  function handleTruckClick() {
+    traffic.push('truck');
+    setTraffic(traffic.slice());
+  }
+  function handleBusClick() {
+    traffic.push('bus');
+    setTraffic(traffic.slice());
+  }
+  function handleMotorcycleClick() {
+    traffic.push('motorcycle');
+    setTraffic(traffic.slice());
+  }
   // track the following state with a few useState hooks:
   // lightColor should be a string that starts out as 'red'
   // lizardSize should be a number that starts out as 10
@@ -62,17 +69,17 @@ function App() {
       This prop should be an array of strings like ['car', 'truck', 'truck', 'car', 'bus'].
       Do you have something like that in state that you could pass as a vehicles prop? 
       */}
-      <VehicleList />
+      <VehicleList vehicles={traffic} />
       <div className='buttons'>
         {/* This part is weird */}
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'car' to the end */}
-        <button>Car</button>
+        <button onClick={() => handleCarClick('car')}>Car</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'bus' to the end */}
-        <button>Bus</button>
+        <button onClick={() => handleBusClick('bus')}>Bus</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'truck' to the end */}
-        <button>Truck</button>
+        <button onClick={() => handleTruckClick('truck')}>Truck</button>
         {/* On click, you should set the traffic in state to be a copy of the same array that's already in state, but immutably add a 'motorcycle' to the end */}
-        <button>Motorcycle</button>
+        <button onClick={() => handleMotorcycleClick('motorcycle')}>Motorcycle</button>
       </div>
 
     </div>

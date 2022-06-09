@@ -1,22 +1,23 @@
 import './App.css';
 import VehicleList from './VehicleList';
-// import TrafficLight from './TrafficLight';
+import TrafficLight from './TrafficLight';
 import { useState } from 'react';
 
 function App() {
+  const [lightColor, setLightColor] = useState('red');
   const [alienSize, setAlienSize] = useState(10);
   const [lizardSize, setLizardSize] = useState(10);
 
-  function handleShrinkAlienClick() {
-    if (alienSize > 30) {
-      setAlienSize(alienSize - 10);
-    }
-  }
-  function handleShrinkLizardClick() {
-    if (lizardSize > 30) {
-      setLizardSize(lizardSize - 10);
-    }
-  }
+  // function handleShrinkAlienClick() {
+  //   if (alienSize > 30) {
+  //     setAlienSize(alienSize - 10);
+  //   }
+  // }
+  // function handleShrinkLizardClick() {
+  //   if (lizardSize > 30) {
+  //     setLizardSize(lizardSize - 10);
+  //   }
+  // }
   // track the following state with a few useState hooks:
   // lightColor should be a string that starts out as 'red'
   // lizardSize should be a number that starts out as 10
@@ -28,33 +29,33 @@ function App() {
       <div className="fight">
         <div className="monster">
           {/* the width of the alien should be ten times whatever the alien size is in state */}
-          <img src="alien.png" width={20} />
+          <img src="alien.png" style={{ width: `${alienSize * 10 }px` }}/>
           <div className='buttons'>
             {/* when you click this button, the alien's size in state should go up by one */}
             <button onClick={() => setAlienSize(alienSize + 1)}>Oh no! The alien is gobblin up all the electricity!</button>
             {/* when you click this button, the lizard's size in state should go down by one */}
-            <button onClick={() => handleShrinkLizardClick(lizardSize - 10)}>Amazing! The alien zapped the lizard!</button>
+            <button onClick={() => setLizardSize(lizardSize - 1)}>Amazing! The alien zapped the lizard!</button>
           </div>
         </div>
         <div className="monster">
           {/* the width of the lizard should be ten times whatever the alien size is in state */}
-          <img src="lizard.png" width={20} />
+          <img src="lizard.png" style={{ width: `${lizardSize * 10 }px` }}/>
           <div className="buttons">
             {/* when you click this button, the lizard's size in state should go up by one */}
             <button onClick={() => setLizardSize(lizardSize + 1)}>Yegads! The lizard is ramping up to its final form!</button>
             {/* when you click this button, the alien's size in state should go up by one */}
-            <button onClick={() => handleShrinkAlienClick(alienSize - 10)}>Oh my! The lizard chomped down on the alien!</button>
+            <button onClick={() => setAlienSize(alienSize - 1)}>Oh my! The lizard chomped down on the alien!</button>
           </div>
         </div>
       </div>
-      {/* <TrafficLight color={lightColor} /> */}
+      <TrafficLight color={lightColor} />
       <div className="buttons">
         {/* when you click this button, the color of the light in state should be set to 'red' */}
-        <button>Red</button>
+        <button onClick={() => setLightColor('red')}>Red</button>
         {/* when you click this button, the color of the light in state should be set to 'yellow' */}
-        <button>Yellow</button>
+        <button onClick={() => setLightColor('yellow')}>Yellow</button>
         {/* when you click this button, the color of the light in state should be set to 'green' */}
-        <button>Green</button>
+        <button onClick={() => setLightColor('green')}>Green</button>
       </div>
       {/* 
       the VehicleList component takes in one prop: vehicles.
